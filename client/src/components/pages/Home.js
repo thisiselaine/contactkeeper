@@ -1,11 +1,16 @@
 // hold form, contact filter, contacts themselves
 
 import React from 'react';
+import Contacts from '../contacts/Contacts';
 
+// call on formatting in CSS file with className
 export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className='grid-2'>
+      <div>{}</div>
+      <div>
+        <Contacts />
+      </div>
     </div>
   );
 };

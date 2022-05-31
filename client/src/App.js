@@ -11,6 +11,7 @@ import './App.css';
 // A Routes looks through children routes and
 // renders the first one that matches the current url
 // UPDATE on rrdv6: Switch is deprecated
+// Wrap everything in ContactState
 const App = () => {
   return (
     <ContactState>
