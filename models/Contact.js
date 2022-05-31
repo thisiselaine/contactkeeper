@@ -12,12 +12,14 @@ const contactSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
   },
-  password: {
+  phone: {
     type: String,
-    required: true,
+  },
+  type: {
+    type: String,
+    default: 'personal',
   },
   date: {
     type: Date,
@@ -25,4 +27,4 @@ const contactSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('user', contactSchema);
+module.exports = mongoose.model('contact', contactSchema);

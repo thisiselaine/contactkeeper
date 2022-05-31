@@ -3,12 +3,26 @@
 
 const express = require('express');
 const router = express.Router();
+// Always used to protect routes
+const auth = require('../middleware/auth');
+const { check, validationResult } = require('express-validator');
+
+const User = require('../models/User');
+const Contact = require('../models/Contact');
 
 // @route   GET api/contacts
 // @desc    Get all users' contacts
 // @access  Private
-router.get('/', (req, res) => {
-  res.send('Get all contacts');
+router.get('/', auth, async (req, res) => {
+  try {
+    const contacts = await Contact.find({ user: req.user.id }).sort({
+      date: -1, // most recent contact first
+    });
+    res.json(contacts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route   POST api/contacts
